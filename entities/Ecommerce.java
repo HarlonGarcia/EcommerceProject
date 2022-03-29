@@ -27,6 +27,11 @@ public class Ecommerce {
 		return categorias.get(catNumber - 1);
 	}
 	
+	public void editarCategoria(Categoria cat, String catNovoNome) {
+		cat.setNome(catNovoNome);
+		Collections.sort(categorias);
+	}
+	
 	public int indexOfCategoria(String catName) {
 		for (int i = 0; i < categorias.size(); i++) {
 			if (categorias.get(i).getNome().equals(catName)) {
@@ -45,20 +50,34 @@ public class Ecommerce {
 		return false;
 	}
 	
+	public boolean removerCategoria(String catName) {
+		for (int i = 0; i < categorias.size(); i++) {
+			if (categorias.get(i).getNome().equals(catName)) {
+				categorias.remove(i);
+				return true;
+			}
+		} return false;
+	}
+
 	public String getNome() {
 		return nome;
 	}
 
 	public String getMenu() {
-		return "MENU\n1- Fazer login como cliente\n2- Fazer login como vendedor\n3- Fazer login como administrador\n4- Criar conta\n5- Sair\nDigite a opção (1/5): ";
+		return "MENU\n1- Fazer login como cliente\n2- Fazer login como vendedor"
+				+ "\n3- Fazer login como administrador\n4- Criar conta\n5- Sair"
+				+ "\nDigite a opção (1/5): ";
 	}
 
 	public String getMenuDeContas() {
-		return "\nQual tipo de conta você deseja criar?\n1- Cliente\n2- Vendedor\n3- Administrador\nDigite a opção (1/3):";
+		return "\nQual tipo de conta você deseja criar?\n1- Cliente"
+				+ "\n2- Vendedor\nDigite a opção (1/2): ";
 	}
 	
 	public String getMenuCRUD() {
-		return "\nAdicionar categoria(1/3):";
+		return "\n1- Adicionar categoria(s)\n2- Editar categoria"
+				+ "\n3- Remover categoria(s)\n4- Listar categorias"
+				+ "\n5- Sair\nDigite a opção (1/5): ";
 	}
 	
 	public List<Cliente> getClientes() {
@@ -77,4 +96,5 @@ public class Ecommerce {
 		}
 		return sb.toString();
 	}
+
 }

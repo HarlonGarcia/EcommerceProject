@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Categoria implements Comparable<Categoria>{
 	protected String nome;
-	protected List<Subcategoria> subcategorias = new ArrayList<Subcategoria>();
+	protected List<Produto> produtos = new ArrayList<Produto>();
 	
 	public Categoria() {
 	}
@@ -14,42 +14,55 @@ public class Categoria implements Comparable<Categoria>{
 		this.nome = nome;
 	}
 	
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	public boolean verificaSubcategoria(Subcategoria sub) {
-		for (int i = 0; i < subcategorias.size(); i++) {
-			// Se houver uma subcategoria já existente, return false
-			if (subcategorias.get(i).getNome().equals(sub.getNome())) {
+	public boolean verificaProduto(Produto prod) {
+		for (int i = 0; i < produtos.size(); i++) {
+			// Se houver um produto igual já existente, return false
+			if (produtos.get(i).getNome().equals(prod.getNome())) {
 				return false;
 			}
 		} 
 		return true;
 	}
 	
-	public boolean addSubcategoria(Subcategoria sub) {
-		if (verificaSubcategoria(sub)) {
-			subcategorias.add(sub);
-			Collections.sort(subcategorias);
+	public boolean addProduto(Produto prod) {
+		if (verificaProduto(prod)) {
+			produtos.add(prod);
+			Collections.sort(produtos);
 			return true;
 		}
 		return false;
+	}
+	
+	public void removerProduto(Produto produto) {
+		produtos.remove(produto);
+	}
+	
+	public String indexOfProduto(String nome) {
+		for (int i = 0; i < produtos.size(); i++) {
+			if (produtos.get(i).getNome().equals(nome)) {
+				return produtos.get(i).getNome();
+			} 
+		}
+		return null;
 	}
 	
 	public int compareTo(Categoria cat) {
 		return this.getNome().compareTo(cat.getNome());
 	}
 	
+	public String getNome() {
+		return nome;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(nome.toUpperCase() + "\n");
-		for (int i=0; i < subcategorias.size(); i++) {
-			sb.append(i + 1 + ". " + subcategorias.get(i).getNome() + "\n");
+		for (int i=0; i < produtos.size(); i++) {
+			sb.append(i + 1 + ". " + produtos.get(i).getNome() + "\n");
 		}
 		return sb.toString();
 	}

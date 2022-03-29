@@ -22,7 +22,7 @@ public class Produto implements Comparable<Produto>{
 		this.quantidade -= quantidade;
 	}
 	
-	public int compareTo(Produto prod) {
+	public final int compareTo(Produto prod) {
 		return this.getNome().compareTo(prod.getNome());
 	}
 	

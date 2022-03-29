@@ -7,7 +7,8 @@ public class Endereco {
     private String cidade;
     private String estado;
     
-    public Endereco() {
+    public Endereco(String rua) {
+    	this.rua = rua;
     }
 
     public Endereco(String rua, Integer numero, String bairro, String cidade, String estado) {
