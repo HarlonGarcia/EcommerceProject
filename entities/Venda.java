@@ -15,7 +15,7 @@ public class Venda {
 		return codigo;
 	}
 
-	// Gera código de venda e armazena no atributo
+	// Gera cÃ³digo de venda e armazena no atributo
 	public String getRandomNumber() {
 		Random codigo = new Random();
 		int number = codigo.nextInt(999999);

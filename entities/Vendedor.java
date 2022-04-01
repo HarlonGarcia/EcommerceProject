@@ -1,12 +1,17 @@
 package entities;
 
-public class Vendedor {
-	private String nome;
-	private String cartao;
+public class Vendedor extends Usuario {
+	private static final long serialVersionUID = 1L;
 	private String pix;
-	private String cpf;
-	private Double saldo;
 	
+	public Vendedor() {
+	}
+
+	public Vendedor(String nome, String senha, Double saldo, String endereco, String cpf, String pix) {
+		super(nome, senha, saldo, endereco, cpf);
+		this.pix = pix;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -23,20 +28,12 @@ public class Vendedor {
 		this.cpf = cpf;
 	}
 	
-	public Double getSaldo() {
+	public double getSaldo() {
 		return saldo;
 	}
 	
 	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
-	}
-
-	public String getCartao() {
-		return cartao;
-	}
-
-	public void setCartao(String cartao) {
-		this.cartao = cartao;
 	}
 
 	public String getPix() {

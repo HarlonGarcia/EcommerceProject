@@ -10,15 +10,17 @@ public class Usuario implements Serializable {
 	protected String senha;
 	protected Double saldo;
 	protected String endereco;
+	protected String cpf;
 	
 	public Usuario() {
 	}
 	
-	public Usuario(String nome, String senha, Double saldo, String endereco) {
+	public Usuario(String nome, String senha, Double saldo, String endereco, String cpf) {
 		this.nome = nome;
 		this.senha = senha;
 		this.saldo = saldo;
 		this.endereco = endereco;
+		this.cpf = cpf;
 	}
 	
 	/*
@@ -77,4 +79,7 @@ public class Usuario implements Serializable {
 		this.endereco = endereco;
 	}
 
+	public String toString() {
+		return "Nome do usuário: " + nome + "\nEndereco: " + endereco + "\nCPF: " + cpf;
+	}
 }

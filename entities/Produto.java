@@ -4,22 +4,13 @@ public class Produto implements Comparable<Produto>{
 	private String nome;
 	private Double preco;
 	private String descricao;
-	private Integer quantidade;
 	
 	public Produto() {
 	}
 	
-	public Produto(String nome, Integer quantidade) {
+	public Produto(String nome, Double preco) {
 		this.nome = nome;
-		this.quantidade = quantidade;
-	}
-
-	public void addQuantidade(String nome, Integer quantidade) {
-		this.quantidade += quantidade;
-	}
-	
-	public void removerQuantidade(String nome, Integer quantidade) {
-		this.quantidade -= quantidade;
+		this.preco = preco;
 	}
 	
 	public final int compareTo(Produto prod) {
@@ -51,7 +42,8 @@ public class Produto implements Comparable<Produto>{
 	}
 	
 	public String toString() {
-		return nome;
+		return "Nome do produto: " + nome + "\nPreço: " + preco
+				+ "\nDescrição: " + descricao;
 	}
 
 }
