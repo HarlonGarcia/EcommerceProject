@@ -12,6 +12,7 @@ public class Cliente extends Usuario {
 	public Cliente(String nome, String senha, Double saldo, String endereco, String cpf, String pix) {
 		super(nome, senha, saldo, endereco, cpf);
 		this.pix = pix;
+		this.carrinho = new Carrinho(nome);
 	}
 
 	public String getPix() {
@@ -22,19 +23,15 @@ public class Cliente extends Usuario {
 		this.pix = pix;
 	}
 	
-	public void associaCarrinho(Carrinho carrin) {
-		this.carrinho = carrin;
-	}
-	
 	public void addNoCarrinho(Produto prod) {
-		carrinho.getProdutosDoCarrinho().add(prod);
+		carrinho.addProdut(prod);
 	}
 	
 	public void removeDoCarrinho(Produto prod) {
 		carrinho.removeProdut(prod);
 	}
 	
-	public Carrinho verCarrinho() {
+	public Carrinho getCarrinho() {
 		return carrinho;
 	}
 }

@@ -69,7 +69,8 @@ public class Categoria implements Comparable<Categoria>{
 		StringBuilder sb = new StringBuilder();
 		sb.append(nome.toUpperCase() + "\n");
 		for (int i = 0; i < produtos.size(); i++) {
-			sb.append(i + 1 + ". " + produtos.get(i).getNome() + "\n");
-		} return sb.toString();
+			sb.append(String.format("%d. %s - Preço: R$%.2f\n", i+1, produtos.get(i).getNome(), produtos.get(i).getPreco()));
+		} 
+		return sb.toString();
 	}
 }

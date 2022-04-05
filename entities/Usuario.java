@@ -4,7 +4,7 @@ package entities;
 //import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class Usuario implements Serializable {
+public abstract class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	protected String nome;
 	protected String senha;
@@ -80,6 +80,6 @@ public class Usuario implements Serializable {
 	}
 
 	public String toString() {
-		return "Nome do usuário: " + nome + "\nEndereco: " + endereco + "\nCPF: " + cpf;
+		return "\nNome: " + nome + "\nEndereço: " + endereco + "\nCPF: " + cpf;
 	}
 }

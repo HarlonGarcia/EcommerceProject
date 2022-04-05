@@ -18,18 +18,18 @@ public class Ecommerce {
 	public String getMenu() {
 		return "MENU\n1- Fazer login como cliente\n2- Fazer login como vendedor"
 				+ "\n3- Fazer login como administrador\n4- Criar conta\n5- Sair"
-				+ "\nDigite a opção (1/5): ";
+				+ "\nDigite umas das opções (1/5): ";
 	}
 	
 	public String getMenuDeContas() {
-		return "\nQual tipo de conta você deseja criar?\n1- Cliente"
-				+ "\n2- Vendedor\n3- Sair\nDigite a opção (1/3): ";
+		return "\nCADASTRO DE USUÁRIOS\n1- Cliente"
+				+ "\n2- Vendedor\n3- Sair\nDigite uma das opções (1/3): ";
 	}
 	
-	public String getMenuCRUD() {
-		return "\n1- Adicionar categoria(s)\n2- Editar categoria"
+	public String getMenuAdm() {
+		return "\nMENU ADMINISTRADOR\n1- Adicionar categoria(s)\n2- Editar categoria"
 				+ "\n3- Remover categoria(s)\n4- Listar categorias"
-				+ "\n5- Sair\nDigite a opção (1/5): ";
+				+ "\n5- Exibir usuários\n6- Sair\nDigite uma das opções (1/6): ";
 	}
 	
 	public Categoria retornaCategoria(int catNumber) {
@@ -55,7 +55,8 @@ public class Ecommerce {
 			categorias.add(cat);
 			Collections.sort(categorias);
 			return true;
-		} return false;
+		} 
+		return false;
 	}
 	
 	public boolean removerCategoria(String catName) {
@@ -77,24 +78,43 @@ public class Ecommerce {
 	}
 	
 	public boolean verificaLoginDeVendedor(String nomeVend, String senhaVend) {
-		for (int i = 0; i < vendedores.size(); i++)
-			if (nomeVend.equals(vendedores.get(i).getNome()) && senhaVend.equals(vendedores.get(i).getSenha())) {
+		try {
+			Vendedor vend = getVendedor(nomeVend); 
+			if (nomeVend.equals(vend.getNome()) && senhaVend.equals(vend.getSenha())) {
 				return true;
-			} return false;
+			}
+		} catch (ObjetoNaoEncontradoException e) {
+			System.out.print(e.getMessage());
+		}
+		return false;
 	}
 	
-	public boolean verificaLoginDeCliente(String nomeCliente, String senhaCliente) {
-		for (int i = 0; i < clientes.size(); i++)
-			if (nomeCliente.equals(clientes.get(i).getNome()) && senhaCliente.equals(clientes.get(i).getSenha())) {
-				return true;
-			} return false;
-	}
 	
 	public boolean addVendedor(Vendedor vend) {
 		if (verificaVendedor(vend)) {
 			vendedores.add(vend);
 			return true;
 		} return false;
+	}
+	
+	public Vendedor getVendedor(String nomeVendedor) throws ObjetoNaoEncontradoException {
+		for (int i = 0; i < vendedores.size(); i++) {
+			if (vendedores.get(i).getNome().equals(nomeVendedor)) {
+				return vendedores.get(i);
+			}
+		} throw new ObjetoNaoEncontradoException("Não há nenhum vendedor com este nome!");
+	}
+	
+	public boolean verificaLoginDeCliente(String nomeCliente, String senhaCliente) {
+		try {
+			Cliente client = getCliente(nomeCliente); 
+			if (nomeCliente.equals(client.getNome()) && senhaCliente.equals(client.getSenha())) {
+				return true;
+			}
+		} catch (ObjetoNaoEncontradoException e) {
+			System.out.print(e.getMessage());
+		}
+		return false;
 	}
 	
 	public boolean verificaCliente(Cliente cliente) {
@@ -113,7 +133,7 @@ public class Ecommerce {
 		} return false;
 	}
 	
-	public Cliente achaCliente(String nomeCliente) throws ObjetoNaoEncontradoException {
+	public Cliente getCliente(String nomeCliente) throws ObjetoNaoEncontradoException {
 		for (int i = 0; i < clientes.size(); i++) {
 			if (clientes.get(i).getNome().equals(nomeCliente)) {
 				return clientes.get(i);

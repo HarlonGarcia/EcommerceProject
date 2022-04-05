@@ -3,6 +3,7 @@ package entities;
 import java.util.List;
 
 public class Pagamento {
+	// Esta classe ainda não está sendo usada
 	private List<Cliente> clientes;
 	public static final String CODIGO = "000000";
 	
