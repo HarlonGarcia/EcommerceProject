@@ -35,7 +35,7 @@ public class Carrinho {
     		}
     	} return null;
     }
-    //
+
     static int calcular(String x, String y) {  // Retorna número de edições
 		if (x.isEmpty()) {
 			return y.length();
@@ -74,7 +74,6 @@ public class Carrinho {
 		}
 		return palavraCerta; // Retorna palavra mais próxima
 	}
-	//
 	
 	public int qtdDeProdutosNoCarrin() {
 		return produtosDoCarrinho.size();

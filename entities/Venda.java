@@ -2,10 +2,10 @@ package entities;
 
 import java.util.Random;
 
+// Implementar na próxima unidade
 public class Venda {
 	private Vendedor vendedor;
 	private int codigo;
-	
 	
 	public Venda(Vendedor vendedor) {
 		this.vendedor = vendedor;

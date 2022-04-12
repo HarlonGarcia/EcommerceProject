@@ -21,9 +21,12 @@ public class EcommerceProgram {
 		
 		Scanner sc = new Scanner(System.in);
 		Locale.setDefault(Locale.US);
-		Ecommerce ec = new Ecommerce("Feira Ecommerce");
+		Ecommerce ec = new Ecommerce("Feira do Rolo Ecommerce");
 		
-		Vendedor v = new Vendedor("Pp", "321", 0.00, "Buraco da Gia", "032.719.540-45", "8396450328");
+		Vendedor v = new Vendedor("Harlon", "321", 0.00, "Beco da Paz", "032.719.540-45", "8396450328");
+		Cliente c = new Cliente("Jemão", "123", 9000.00, "Rua 1", "427.902.256-90", "8390038744");
+		ec.addVendedor(v);
+		ec.addCliente(c);
 		Categoria cat1 = new Categoria("Tecnologia");
 		Categoria cat2 = new Categoria("Roupas");
 		ec.addCategoria(cat1);
@@ -37,9 +40,6 @@ public class EcommerceProgram {
 		v.novoProdutoAnunciado(prod1);
 		v.novoProdutoAnunciado(prod2);
 		v.novoProdutoAnunciado(prod3);
-		Cliente c = new Cliente("Jemão", "123", 9000.00, "Rua 1", "427.902.256-90", "8390038744");
-		ec.addCliente(c);
-		ec.addVendedor(v);
 		
 		System.out.printf("Bem vindo ao %s!\n", ec.getNome());
 		int opcao;
@@ -59,7 +59,6 @@ public class EcommerceProgram {
 					clienteLogado = true;
 				} else {
 					clienteLogado = false;
-					System.out.println("Senha Inválida!");
 				}
 				
 				if (clienteLogado) {
@@ -96,8 +95,8 @@ public class EcommerceProgram {
 								} else {
 									String palavra = cliente.getCarrinho().algoritmoLevenshtein(nomeDigitado);
 									System.out.printf("\nVocê quis dizer %s? ", palavra);
-									String simOuNao = sc.nextLine().toUpperCase();
-									if (simOuNao.equals("SIM") || simOuNao.equals("S")) {
+									String simOuNao = sc.nextLine();
+									if (simOuNao.equalsIgnoreCase("SIM") || simOuNao.equalsIgnoreCase("S")) {
 										System.out.print("\n" + cliente.getCarrinho().retornaProdutoDoCarrinho(palavra) + "\n");
 									} else {
 										System.out.print("\nNão conseguimos achar um produto com o nome que foi digitado!\n");
@@ -129,7 +128,6 @@ public class EcommerceProgram {
 					vendedorLogado = true;
 				} else {
 					vendedorLogado = false;
-					System.out.println("Senha Inválida!");
 				}
 				
 				while (vendedorLogado) {

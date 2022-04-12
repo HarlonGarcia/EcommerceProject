@@ -1,7 +1,7 @@
 package entities;
 
+// Implementar na próxima unidade
 public class Endereco {
-	// Esta classe ainda não está sendo usada
 	private String rua;
 	private Integer numero;
     private String bairro;

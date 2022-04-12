@@ -2,8 +2,8 @@ package entities;
 
 import java.util.List;
 
+// Implementar na próxima unidade
 public class Pagamento {
-	// Esta classe ainda não está sendo usada
 	private List<Cliente> clientes;
 	public static final String CODIGO = "000000";
 	
@@ -32,7 +32,6 @@ public class Pagamento {
 	 * @param Valor a ser pago com cartao
 	 * @return Um codigo que identifica a venda ou retorna null caso nao ache a venda
 	 */
-
 	public String pagarComCartao(Cliente cliente, Vendedor vendedor, Double valor) {
 		for (int i = 0; i < clientes.size(); i++) {
 			if (clientes.get(i).getNome().equals(cliente.getNome())) {			

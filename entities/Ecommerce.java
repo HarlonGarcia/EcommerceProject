@@ -84,7 +84,7 @@ public class Ecommerce {
 				return true;
 			}
 		} catch (ObjetoNaoEncontradoException e) {
-			System.out.print(e.getMessage());
+			System.out.print("Login inválido!\n");
 		}
 		return false;
 	}
@@ -112,7 +112,7 @@ public class Ecommerce {
 				return true;
 			}
 		} catch (ObjetoNaoEncontradoException e) {
-			System.out.print(e.getMessage());
+			System.out.print("Login inválido!\n");
 		}
 		return false;
 	}
